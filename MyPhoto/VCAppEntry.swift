@@ -53,6 +53,14 @@ extension VCAppEntry {
         
         // the call below is just an example to calculate again in another way
         //getArrayOfBytesFromImage(imgData!)
+        
+        //
+        
+        let uImgFromData:UIImage = UIImage(data: imgData!)!
+        print("From Data to Image :   ======================== ")
+        print(uImgFromData)
+        print("From Data to Image : / ======================== ")
+        
     }
 }
 
@@ -88,6 +96,15 @@ extension VCAppEntry {
         print("getArrayOfBytesFromImage: / ============= ")
         
         return byteArray
+    }
+    
+    // MARK: - Get UIImage from ByteArray Data
+    func getImageFromData(imgData:NSData) -> UIImage {
+        //let datos: NSData = NSData(bytes: bytes, length: bytes.count)
+        //let i:UIImage = UIImage(data: datos)
+        
+        let uImgFromData:UIImage = UIImage(data: imgData)!
+        return uImgFromData
     }
 }
 //
