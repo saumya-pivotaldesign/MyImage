@@ -33,6 +33,10 @@ extension VCAppEntry {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
         
+        // UIImagePickerControllerSourceType.PhotoLibrary
+        // UIImagePickerControllerSourceType.Camera
+        // UIImagePickerControllerSourceType.SavedPhotosAlbum
+        
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     @IBAction func onUpload(sender:UIButton){
