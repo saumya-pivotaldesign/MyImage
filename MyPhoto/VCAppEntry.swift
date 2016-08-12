@@ -41,6 +41,15 @@ extension VCAppEntry {
     }
     @IBAction func onUpload(sender:UIButton){
         print("onUpload")
+        
+        let uImg:UIImage = uiImgSelected.image!
+        let imgData = UIImageJPEGRepresentation(uImg, 1.0)
+        
+        print(uImg)
+        
+        print("ByteArray : =======================")
+        print(imgData)
+        print("Done ByteArray Data : =============")
     }
 }
 
