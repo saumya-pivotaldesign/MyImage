@@ -50,18 +50,44 @@ extension VCAppEntry {
         print("ByteArray : =======================")
         print(imgData)
         print("Done ByteArray Data : =============")
+        
+        // the call below is just an example to calculate again in another way
+        //getArrayOfBytesFromImage(imgData!)
     }
 }
 
 extension VCAppEntry {
     // MARK: - UIImagePickerControllerDelegate Methods
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             uiImgSelected.contentMode = .ScaleAspectFit
             uiImgSelected.image = pickedImage
         }
         
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // ref : https://stackoverflow.com/questions/29734059/convert-uiimage-to-byte-array-in-swift#29734526
+    // MARK: - Utility Method
+    func getArrayOfBytesFromImage(imageData:NSData) -> NSMutableArray
+    {
+        // the number of elements:
+        let count = imageData.length / sizeof(UInt8)
+        // create array of appropriate length:
+        var bytes = [UInt8](count: count, repeatedValue: 0)
+        // copy bytes into array
+        imageData.getBytes(&bytes, length:count * sizeof(UInt8))
+        var byteArray:NSMutableArray = NSMutableArray()
+        for (var i = 0; i < count; i++) {
+            byteArray.addObject(NSNumber(unsignedChar: bytes[i]))
+        }
+        
+        print("getArrayOfBytesFromImage:   ============= ")
+        print(byteArray)
+        print("getArrayOfBytesFromImage: / ============= ")
+        
+        return byteArray
     }
 }
 //
