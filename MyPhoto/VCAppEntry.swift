@@ -45,5 +45,14 @@ extension VCAppEntry {
 }
 
 extension VCAppEntry {
+    // MARK: - UIImagePickerControllerDelegate Methods
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            uiImgSelected.contentMode = .ScaleAspectFit
+            uiImgSelected.image = pickedImage
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 //
